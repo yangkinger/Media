@@ -11,5 +11,3 @@
 5、PHP 放开所有 shell_exec 函数
 
 6、将链接 https://你的域名/api.php?action=check_and_restart 放入定时任务，每隔5分钟执行
-
-7、将域名发给https://t.me/Clark_Yang做授权
