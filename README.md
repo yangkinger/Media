@@ -16,7 +16,7 @@
 
 7、从 https://ffmpeg.org/download.html 下载二进制ffmpeg 文件放入根目录，并设置可执行权限
 
-================================================================================================
+
 
 A PHP-based tool for calling FFmpeg to slice, transcode, and push streams
 
