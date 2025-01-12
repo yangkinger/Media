@@ -1,4 +1,4 @@
-多频道直播管理程序
+![image](https://github.com/user-attachments/assets/c8ddb849-1a5e-4fd0-8999-d65a4f33ea0d)多频道直播管理程序
 
 一个PHP 实现的 调用ffmpeg 切片 转码 推流工具
 
@@ -19,6 +19,11 @@
 本程序为免费公开项目，禁止任何用于违法的行为
 
 
+![image](https://github.com/user-attachments/assets/e93824ee-7e6b-4c3d-b4b3-59cc5bfa5208)
+
+
+
+
 A PHP-based tool for calling FFmpeg to slice, transcode, and push streams
 
 Deploy the program in the root directory of the website.
@@ -36,6 +41,8 @@ Add the link https://your-domain.com/api.php?action=check_and_restart to a cron 
 Download the binary FFmpeg file from https://ffmpeg.org/download.html and place it in the root directory, then set the executable permissions.
 
 The program is a free and open-source project and any use for illegal activities is prohibited.
+
+
 
 
 
