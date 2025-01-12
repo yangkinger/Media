@@ -1,77 +1,39 @@
-<?php //00363
-// IONCUBE ENCODER 14.0 EVALUATION
-// THIS LICENSE MESSAGE IS ONLY ADDED BY THE EVALUATION ENCODER AND
-// IS NOT PRESENT IN PRODUCTION ENCODED FILES
+<?php
+include $_SERVER['DOCUMENT_ROOT'].'/init.php'; // 引入文件
+// 省略已有的功能函数...
+// 添加一个更新频道的函数
+function updateChannel($channel_id, $new_name, $new_url, $rtmp_url,$file_path,$ffmpeg_config) {
+    // 读取文件内容
+    $channels = file($file_path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    $updated_channels = [];
 
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
+    // 遍历所有频道，找到需要更新的频道
+    foreach ($channels as $line) {
+        list($name, $id, $url) = explode(',', $line);
+        if (trim($id) === $channel_id) {
+            $updated_channels[] = "{$new_name},{$channel_id},{$new_url},{$rtmp_url},{$ffmpeg_config}";
+        } else {
+            $updated_channels[] = $line;
+        }
+    }
+
+    // 将更新后的内容写回文件
+    file_put_contents($file_path, implode("\r\n", $updated_channels) . "\r\n");
+}
+
+// 检查是否为编辑请求
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['editChannelId'])) {
+    $channel_id = $_POST['editChannelId'];
+    $channel_name = $_POST['editChannelName'];
+    $channel_url = $_POST['editChannelUrl'];
+    $rtmp_url = $_POST['editrtmpUrl'];
+    $ffmpeg_config = $_POST['editffmpeg_config'];
+    $file_path = $GLOBALS['playurl'];
+    // 更新频道信息
+    updateChannel($channel_id, $channel_name, $channel_url,$rtmp_url, $file_path,$ffmpeg_config);
+
+    // 返回 JSON 响应
+    echo json_encode(['status' => 'success', 'message' => '频道信息已更新']);
+    exit();
+}
 ?>
-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
