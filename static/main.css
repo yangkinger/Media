@@ -1,0 +1,200 @@
+/* 基础样式 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f7fc;
+}
+
+
+
+/* 顶部栏 */
+.header {
+    width: 100%;
+    background-color: #2e7d32; /* 更深的绿色 */
+    color: white;
+    padding: 15px 20px;
+    text-align: right;
+    font-size: 24px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 侧边栏 */
+.sidebar {
+    width: 250px;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    top: 60px; /* 留出顶部栏空间 */
+    bottom: 0;
+    left: 0;
+    padding-top: 30px;
+    transition: all 0.3s ease;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 15px 20px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.sidebar ul li:hover {
+    background-color: #575757;
+}
+
+/* 内容区域 */
+.content {
+    margin-left: 250px;
+    margin-top: 60px;
+    padding: 30px 20px;
+    flex-grow: 1;
+    transition: margin-left 0.3s ease;
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+}
+/* 响应式设计，屏幕较小的设备 */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .content {
+        margin-left: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        width: 150px;
+    }
+
+    .content {
+        margin-left: 150px;
+    }
+}
+
+/* 美化表格 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid #ddd;
+    font-size: 16px;
+}
+
+th {
+    background-color: #66bb6a; /* 更浅的绿色 */
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+td a {
+    text-decoration: none;
+    color: #2e7d32; /* 深绿色 */
+    font-weight: bold;
+}
+
+td a:hover {
+    color: #333;
+}
+
+/* 侧边栏 */
+.sidebar {
+    width: 250px;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    top: 60px; /* 保留顶部栏空间 */
+    bottom: 0;
+    left: 0;
+    padding-top: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 15px 20px;
+    font-size: 16px;
+    border-bottom: 1px solid #444; /* 分隔线 */
+    cursor: pointer;
+    transition: background-color 0.3s, padding-left 0.3s;
+}
+
+.sidebar ul li:last-child {
+    border-bottom: none; /* 最后一项无分隔线 */
+}
+
+/* 链接样式 */
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+}
+
+.sidebar ul li:hover {
+    background-color: #575757;
+    padding-left: 30px; /* 悬停时增加缩进 */
+}
+
+.sidebar ul li a:hover {
+    color: #66bb6a; /* 链接悬停时的高亮颜色 */
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .sidebar ul li {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        width: 150px;
+    }
+
+    .sidebar ul li {
+        font-size: 12px;
+    }
+}

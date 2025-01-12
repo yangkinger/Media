@@ -1,0 +1,89 @@
+<div class="modal-content">
+    <!-- 关闭按钮 -->
+    <span class="close" id="closeEditModalBtn">&times;</span>
+    <form action="save_hls_config.php" method="post">
+        <!-- 使用表格布局 -->
+        <table>
+            <tr>
+                <th><label for="video_codec">分辨率:</label></th>
+                <td>
+                    <select id="video_size" name="video_size" class="form-select">
+                        <option value="copy">直接复制</option>
+                        <option value="1280x720">1280x720</option>
+                        <option value="1920x1080">1920x1080</option>
+                        <option value="640x360">640x360</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="video_codec">视频编解码器:</label></th>
+                <td>
+                    <select id="video_codec" name="video_codec" class="form-select">
+                        <option value="copy">直接复制</option>
+                        <option value="libx264">H.264 (libx264)</option>
+                        <option value="libx265">H.265 (libx265)</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="audio_codec">音频编解码器:</label></th>
+                <td>
+                    <select id="audio_codec" name="audio_codec" class="form-select">
+                        <option value="copy">直接复制</option>
+                        <option value="aac">AAC</option>
+                        <option value="mp3">MP3</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="audio_bitrate">音频比特率 (kbps):</label></th>
+                <td>
+                    <select id="audio_bitrate" name="audio_bitrate" class="form-select">
+                        <option value="64">64 kbps</option>
+                        <option value="128">128 kbps</option>
+                        <option value="192">192 kbps</option>
+                        <option value="256">256 kbps</option>
+                        <option value="320">320 kbps</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="audio_sample_rate">音频采样率 (Hz):</label></th>
+                <td>
+                    <select id="audio_sample_rate" name="audio_sample_rate" class="form-select">
+                        <option value="22050">22050 Hz</option>
+                        <option value="44100">44100 Hz</option>
+                        <option value="48000">48000 Hz</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="hls_time">HLS 切片时长 (秒):</label></th>
+                <td><input type="text" id="hls_time" name="hls_time" class="form-control" value="4"></td>
+            </tr>
+            <tr>
+                <th><label for="hls_list_size">HLS 列表大小:</label></th>
+                <td><input type="text" id="hls_list_size" name="hls_list_size" class="form-control" value="6"></td>
+            </tr>
+            <tr>
+                <th><label for="v_c_same">音视频同轨:</label></th>
+                <td><input type="text" id="v_c_same" name="v_c_same" class="form-control" value="-flvflags no_duration_filesize"></td>
+            </tr>
+            <tr>
+                <th><label for="v_c">音视频同步:</label></th>
+                <td><input type="text" id="v_c" name="v_c" class="form-control" value="-async 1"></td>
+            </tr>
+            <tr>
+                <th><label for="extra_params">附加参数:</label></th>
+                <td><textarea id="extra_params" name="extra_params" class="form-control" rows="4">
+                    ddd
+                </textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button type="submit">保存配置</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
