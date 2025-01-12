@@ -1,0 +1,15 @@
+1、将程序部署在网站的根目录
+
+2、hls 目录设置为777权限
+
+3、nginx 1.2 +
+
+4、PHP 7.2 -7.4
+
+5、PHP 安装扩展  ionCube
+
+6、PHP 放开所有 shell_exec 函数
+
+7、将链接 https://你的域名/api.php?action=check_and_restart 放入定时任务，每隔5分钟执行
+
+8、将域名发给https://t.me/Clark_Yang做授权
