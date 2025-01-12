@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/c8ddb849-1a5e-4fd0-8999-d65a4f33ea0d)多频道直播管理程序
+多频道直播管理程序
 
 一个PHP 实现的 调用ffmpeg 切片 转码 推流工具
 
