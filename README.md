@@ -16,6 +16,7 @@
 
 7、从 https://ffmpeg.org/download.html 下载二进制ffmpeg 文件放入根目录，并设置可执行权限
 
+本程序为免费公开项目，禁止任何用于违法的行为
 
 
 A PHP-based tool for calling FFmpeg to slice, transcode, and push streams
@@ -33,3 +34,11 @@ Ensure that the shell_exec function is enabled in PHP.
 Add the link https://your-domain.com/api.php?action=check_and_restart to a cron job to run every 5 minutes.
 
 Download the binary FFmpeg file from https://ffmpeg.org/download.html and place it in the root directory, then set the executable permissions.
+
+The program is a free and open-source project and any use for illegal activities is prohibited.
+
+
+
+
+
+
