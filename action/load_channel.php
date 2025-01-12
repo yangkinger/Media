@@ -1,82 +1,101 @@
-<?php //00363
-// IONCUBE ENCODER 14.0 EVALUATION
-// THIS LICENSE MESSAGE IS ONLY ADDED BY THE EVALUATION ENCODER AND
-// IS NOT PRESENT IN PRODUCTION ENCODED FILES
+<?php
 
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
+include $_SERVER['DOCUMENT_ROOT'].'/action/function.php'; // 引入文件
+
+// 获取频道列表的函数
+function getChannelList($file_path) {
+    // 检查文件是否存在
+    if (!file_exists($file_path)) {
+        return [];
+    }
+
+    // 读取文件内容
+    $channels = file($file_path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    $channel_data = [];
+
+    // 处理每一行数据，假设每行格式为: 频道名称-频道ID-频道源地址
+    foreach ($channels as $line) {
+        list($name, $id, $url,$rtmpurl,$ffmpeg) = explode(',', $line);
+        $listchannel = getChannelStatus(trim($id));
+        
+        $channel_data[] = [
+            'tvname' => trim($name),
+            'channel_id' => trim($id),
+            'playurl' => trim($url),
+            'rtmpurl' => trim($rtmpurl),
+            'status' => $listchannel['status'], // 获取频道状态
+            'restart_count'=>$listchannel['restart_count'], 
+            'mark' =>$listchannel['mark'],
+            'ffmpeg' =>getItem($ffmpeg)['name'],
+            'ffmpegval' =>getItem($ffmpeg)['value'],
+            'channel_action_status' =>$listchannel['channel_action_status']
+        ];
+    }
+   
+    return $channel_data;
+}
+
+
+
+function getChannelStatus($channel_id) {
+    $api_url = $GLOBALS['apihost'] ;  // FastAPI 获取频道状态的接口
+    
+    // 初始化 cURL 请求
+    $ch = curl_init();
+    
+    // 设置 cURL 请求方式为 POST
+    curl_setopt($ch, CURLOPT_URL, $api_url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_POST, true);
+    
+    // 设置 POST 数据，使用 JSON 格式
+    $post_data = json_encode([
+        'channel_id' => $channel_id,  // 频道 ID
+        'action' => 'status'  // 动作参数为 status
+    ]);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);  // 将数据作为 JSON 格式发送
+
+    // 设置 HTTP 头部，告知服务器接收 JSON 数据
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        "Content-Type: application/json"
+    ]);
+    
+    // 执行请求
+    $response = curl_exec($ch);
+    
+    // 检查请求是否成功
+    if (curl_errno($ch)) {
+        curl_close($ch);
+        return [
+            'status' => 'inactive',  // 如果请求失败，默认返回 'inactive'
+            'restart_count' => 0
+        ];
+    }
+    
+    // 关闭 cURL
+    curl_close($ch);
+    
+    // 解析 API 响应
+    $result = json_decode($response, true);
+    
+    // 检查返回的状态和重启次数
+    if (isset($result['status']) && $result['is_online'] === true) {
+        $status = 'active';  // 如果状态是 running，则返回 active
+    } else {
+        $status = 'inactive';  // 否则，返回 inactive
+    }
+    
+    // 获取重启次数，默认为 0
+    $restart_count = isset($result['restart_count']) ? $result['restart_count'] : 0;
+    $mark = isset($result['mark']) ? $result['mark'] : '';  // 防止 mark 不存在
+    return [
+        'status' => $status,
+        'restart_count' => $restart_count,
+        'mark' => $mark,
+        'channel_action_status' => $result['channel_action_status']
+    ];
+}
+
+
+
 ?>
-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
-jR3dd9hmT2Q8vMrc/r200TNhH/idFLyTjQd9Fai=
